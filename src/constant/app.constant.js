@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://sujeet-portfolio-backend.vercel.app/api'
