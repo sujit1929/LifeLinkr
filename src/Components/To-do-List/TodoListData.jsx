@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../constant/app.constant";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const TODOS_PER_PAGE = 3;
 
@@ -15,7 +14,7 @@ export default function TodoListData() {
     const [newTodo, setNewTodo] = useState('');
 
 
-    // Fetch Todos
+
     const fetchTodos = async () => {
         try {
             const response = await fetch(`${BASE_URL}/todos/get-all-todos`);
@@ -41,7 +40,7 @@ export default function TodoListData() {
         e.preventDefault();
         if (!newTodo.trim()) return;
 
-        // setCreating(true);
+
         try {
             const response = await fetch(`${BASE_URL}/todos/create-todos`, {
                 method: "POST",
@@ -61,10 +60,10 @@ export default function TodoListData() {
         } catch (err) {
             alert("Error creating todo.");
             console.error(err);
-        } 
+        }
     };
 
-    // Filtered + Paginated
+
     const filteredTodos = todos.filter((todo) => {
         const todoDate = new Date(todo.createdAt).toISOString().split("T")[0];
         const isSearchMatch = todo.todo.toLowerCase().includes(search.toLowerCase());
@@ -149,7 +148,7 @@ export default function TodoListData() {
                                         <div className="card-body">
                                             <h5 className="card-title mb-2">{todo.todo}</h5>
                                             <div className="d-flex justify-content-between align-items-center">
-                                           
+
                                                 <small className="text-muted">
                                                     {new Date(todo.createdAt).toLocaleDateString()}
                                                 </small>
@@ -166,8 +165,8 @@ export default function TodoListData() {
                                         <button
                                             key={page}
                                             className={`btn btn-sm ${currentPage === page
-                                                    ? "btn-primary"
-                                                    : "btn-outline-primary"
+                                                ? "btn-primary"
+                                                : "btn-outline-primary"
                                                 }`}
                                             onClick={() => setCurrentPage(page)}
                                         >
