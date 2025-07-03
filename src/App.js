@@ -1,12 +1,12 @@
-import TodoList from "./Components/To-do-List/TodoList";
+import TodoListData from "./Components/To-do-List/TodoListData";
 
 
 function App() {
 
 
   return (
-    <div className="App">
-      <TodoList />
+    <div >
+      <TodoListData />
     </div>
   );
 }
