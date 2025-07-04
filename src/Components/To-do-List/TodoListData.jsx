@@ -148,7 +148,7 @@ export default function TodoListData() {
                         </div>
                     )}
 
-                    {loading ? (
+                    {  loading ? (
                         <TodoSkeleton />
                     ) : filteredTodos.length === 0 ? (
                         <p className="text-center text-muted">No todos found.</p>

@@ -25,7 +25,7 @@ const SkeletonPagination = () => (
 
 const TodoSkeleton = () => {
   return (
-    <div className="container mt-2">
+    <div className="">
       {Array.from({ length: 3 }).map((_, i) => (
         <SkeletonCard key={i} />
       ))}
