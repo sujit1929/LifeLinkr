@@ -12,7 +12,7 @@ const SkeletonCard = () => (
 );
 
 const SkeletonPagination = () => (
-  <div className="d-flex flex-wrap gap-2 mt-4">
+  <div className="d-flex justify-content-center flex-wrap gap-2 mt-4">
     {Array.from({ length: 13 }).map((_, i) => (
       <span
         key={i}
@@ -25,7 +25,7 @@ const SkeletonPagination = () => (
 
 const TodoSkeleton = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-2">
       {Array.from({ length: 3 }).map((_, i) => (
         <SkeletonCard key={i} />
       ))}

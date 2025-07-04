@@ -78,17 +78,17 @@ export default function TodoListData() {
     const indexOfLastTodo = currentPage * TODOS_PER_PAGE;
     const indexOfFirstTodo = indexOfLastTodo - TODOS_PER_PAGE;
     const paginatedTodos = filteredTodos.slice(indexOfFirstTodo, indexOfLastTodo);
-
-    const handleNextPage = () => {
-        if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
-        }
-    };
     const handlePreviousPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
     };
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
 
     return (
         <div className="container py-5" style={{ maxWidth: "700px" }}>
