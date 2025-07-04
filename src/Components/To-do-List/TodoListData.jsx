@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../constant/app.constant";
+import TodoSkeleton from "./TodoSkeleton";
 
 const TODOS_PER_PAGE = 3;
 
@@ -136,7 +137,7 @@ export default function TodoListData() {
                     )}
 
                     {loading ? (
-                        <p className="text-center text-muted">Loading todos...</p>
+                        <TodoSkeleton />
                     ) : filteredTodos.length === 0 ? (
                         <p className="text-center text-muted">No todos found.</p>
                     ) : (
