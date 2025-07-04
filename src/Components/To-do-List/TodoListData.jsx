@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../constant/app.constant";
 import TodoSkeleton from "./TodoSkeleton";
+import { ArrowLeftIcon, ArrowRightIcon, MoveLeftIcon, MoveRightIcon } from "lucide-react";
 
 const TODOS_PER_PAGE = 3;
 
@@ -77,6 +78,17 @@ export default function TodoListData() {
     const indexOfLastTodo = currentPage * TODOS_PER_PAGE;
     const indexOfFirstTodo = indexOfLastTodo - TODOS_PER_PAGE;
     const paginatedTodos = filteredTodos.slice(indexOfFirstTodo, indexOfLastTodo);
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+    const handlePreviousPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
 
     return (
         <div className="container py-5" style={{ maxWidth: "700px" }}>
@@ -160,21 +172,27 @@ export default function TodoListData() {
                             </div>
 
                             <div className="d-flex justify-content-center flex-wrap mt-4 gap-2">
+                                <button className="border-0 bg-transparent p-0">
+                                    <ArrowLeftIcon className="cursor-pointer" onClick={handlePreviousPage} />
+                                </button>
+
                                 {[...Array(totalPages)].map((_, index) => {
                                     const page = index + 1;
                                     return (
                                         <button
                                             key={page}
-                                            className={`btn btn-sm ${currentPage === page
-                                                ? "btn-primary"
-                                                : "btn-outline-primary"
-                                                }`}
+                                            className={`btn btn-sm ${currentPage === page ? "btn-primary" : "btn-outline-primary"}`}
                                             onClick={() => setCurrentPage(page)}
                                         >
                                             {page}
                                         </button>
                                     );
                                 })}
+
+                                <button className="border-0 bg-transparent p-0">
+                                    <ArrowRightIcon className="cursor-pointer" onClick={handleNextPage} />
+                                </button>
+
                             </div>
                         </>
                     )}
