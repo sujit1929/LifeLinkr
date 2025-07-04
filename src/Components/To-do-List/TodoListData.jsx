@@ -13,7 +13,7 @@ export default function TodoListData() {
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-    const [newTodo, setNewTodo] = useState('');
+    const [createTodo, setCreateNewTodo] = useState('');
 
 
 
@@ -40,7 +40,7 @@ export default function TodoListData() {
 
     const handleCreateTodo = async (e) => {
         e.preventDefault();
-        if (!newTodo.trim()) return;
+        if (!createTodo.trim()) return;
 
 
         try {
@@ -49,7 +49,7 @@ export default function TodoListData() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ todo: newTodo }),
+                body: JSON.stringify({ todo: createTodo }),
             });
 
             if (!response.ok) {
@@ -58,7 +58,7 @@ export default function TodoListData() {
 
             const created = await response.json();
             setTodos((prev) => [created, ...prev]);
-            setNewTodo('');
+            setCreateNewTodo('');
         } catch (err) {
             alert("Error creating todo.");
             console.error(err);
@@ -102,8 +102,8 @@ export default function TodoListData() {
                                 type="text"
                                 className="form-control"
                                 placeholder="Add new todo..."
-                                value={newTodo}
-                                onChange={(e) => setNewTodo(e.target.value)}
+                                value={createTodo}
+                                onChange={(e) => setCreateNewTodo(e.target.value)}
                             />
                             <button
                                 className="btn btn-success"
