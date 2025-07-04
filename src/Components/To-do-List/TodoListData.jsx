@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../constant/app.constant";
 import TodoSkeleton from "./TodoSkeleton";
-import { ArrowLeftIcon, ArrowRightIcon, MoveLeftIcon, MoveRightIcon } from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon} from "lucide-react";
 
 const TODOS_PER_PAGE = 3;
 
