@@ -80,12 +80,12 @@ export default function TodoListData() {
     const paginatedTodos = filteredTodos.slice(indexOfFirstTodo, indexOfLastTodo);
     const handlePreviousPage = () => {
         if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
+            setCurrentPage((prev) => prev - 1);
         }
     };
     const handleNextPage = () => {
         if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
+            setCurrentPage((prev) => prev + 1);
         }
     };
 
@@ -172,8 +172,8 @@ export default function TodoListData() {
                             </div>
 
                             <div className="d-flex justify-content-center flex-wrap mt-4 gap-2">
-                                <button className="border-0 bg-transparent p-0">
-                                    <ArrowLeftIcon className="cursor-pointer" onClick={handlePreviousPage} />
+                                <button className="border-0 bg-transparent p-0" disabled={currentPage === 1} onClick={handlePreviousPage} >
+                                    <ArrowLeftIcon className="cursor-pointer" />
                                 </button>
 
                                 {[...Array(totalPages)].map((_, index) => {
@@ -189,8 +189,8 @@ export default function TodoListData() {
                                     );
                                 })}
 
-                                <button className="border-0 bg-transparent p-0">
-                                    <ArrowRightIcon className="cursor-pointer" onClick={handleNextPage} />
+                                <button className="border-0 bg-transparent p-0" disabled={currentPage === totalPages} onClick={handleNextPage} >
+                                    <ArrowRightIcon className="cursor-pointer" />
                                 </button>
 
                             </div>
